@@ -1,0 +1,13 @@
+# PyCharm
+.idea/
+
+# Python скомпилированные файлы и кэш
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Системные файлы macOS (если работаете на Mac)
+.DS_Store
