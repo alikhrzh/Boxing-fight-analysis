@@ -227,28 +227,47 @@ evaluation pipeline are available.
 
 ```text
 Boxing-fight-analysis/
+├── backend/                # FastAPI upload and analysis-job API
+├── frontend/               # React and TypeScript dashboard
 ├── models/                 # Local pose-model weights
+├── ARCHITECTURE.md         # Target system design and contracts
 ├── posefiltering.ipynb     # Initial YOLO pose exploration
-├── .gitignore
-├── LICENSE
 └── README.md
 ```
 
-The current notebook loads a YOLO pose model. The architecture described above
-is the implementation roadmap, not a claim that the complete pipeline already
-exists.
+The web application can upload videos, persist analysis jobs, report status,
+and cancel queued work. The computer-vision worker is not implemented yet, so
+new analysis jobs remain queued and the UI states that limitation explicitly.
+The current notebook only loads a YOLO pose model. See
+[`ARCHITECTURE.md`](ARCHITECTURE.md) for component boundaries, contracts, and
+the implementation sequence.
 
 ## Local setup
 
-Python 3.10 or newer is recommended.
+The backend requires Python 3.11 or newer:
 
 ```bash
+cd backend
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install ultralytics opencv-python jupyter
-jupyter notebook posefiltering.ipynb
+python -m pip install -e '.[dev]'
+uvicorn app.main:app --reload
 ```
+
+In a second terminal, run the frontend with Node.js 20.19 or newer:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The dashboard is available at <http://localhost:5173> and API documentation at
+<http://localhost:8000/docs>. More configuration details are in the backend and
+frontend READMEs.
+
+The original pose notebook additionally requires `ultralytics`,
+`opencv-python`, and `jupyter`.
 
 Model weights can be downloaded automatically by Ultralytics when a supported
 model name is used. Large weights, raw videos, generated predictions, and

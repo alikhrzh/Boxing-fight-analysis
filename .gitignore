@@ -11,3 +11,23 @@ venv/
 
 # Системные файлы macOS (если работаете на Mac)
 .DS_Store
+
+# Backend runtime data and local configuration
+backend/.env
+backend/data/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Frontend dependencies and build output
+frontend/.env
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+
+# Generated analysis artifacts and private media
+artifacts/
+data/samples/*
+!data/samples/.gitkeep
