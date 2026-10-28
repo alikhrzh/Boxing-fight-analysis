@@ -223,6 +223,25 @@ Planned metrics:
 Metrics will be reported only after a labelled test set and reproducible
 evaluation pipeline are available.
 
+## Minimum measurable milestone
+
+Before this project is presented as a finished ML system, the smallest useful
+milestone is punch-attempt detection rather than landed-punch classification:
+
+1. Collect legally usable clips from several fights and camera positions.
+2. Annotate punch-attempt start/end times and `no_punch` motion with a written
+   labelling guide; keep uncertain examples separate.
+3. Split data by fight so the same fighters, venue, and camera do not appear in
+   both development and test sets.
+4. Implement a reproducible wrist-velocity/elbow-extension rule baseline.
+5. Match predicted and labelled events with one fixed temporal tolerance.
+6. Report event-level precision, recall, F1, false attempts per minute, and
+   test-set coverage on a held-out fight split.
+
+Until that milestone is complete, this repository should be described as a
+**research prototype** and should not replace a project with measured results
+in the pinned profile selection.
+
 ## Current repository contents
 
 ```text
