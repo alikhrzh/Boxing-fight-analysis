@@ -242,7 +242,7 @@ Until that milestone is complete, this repository should be described as a
 **research prototype** and should not replace a project with measured results
 in the pinned profile selection.
 
-## Current repository contents
+## Repository structure (current)
 
 ```text
 Boxing-fight-analysis/
@@ -253,6 +253,22 @@ Boxing-fight-analysis/
 ├── posefiltering.ipynb     # Initial YOLO pose exploration
 └── README.md
 ```
+
+The current files represent product scaffolding plus one exploratory computer-
+vision notebook:
+
+- `backend/` implements video upload, persistent analysis-job state, status
+  polling, and cancellation through FastAPI. It does not run CV inference yet.
+- `frontend/` is the React/TypeScript dashboard for uploading videos and
+  displaying job states returned by the backend.
+- `models/` stores local YOLO pose weights used by the notebook; model licensing
+  and redistribution remain separate from the repository's MIT license.
+- `posefiltering.ipynb` is the initial multi-person pose experiment, not a
+  reproducible event-detection pipeline.
+- `ARCHITECTURE.md` defines the intended services, data contracts, worker
+  boundary, and implementation order.
+- Backend and frontend tests cover the existing API and UI scaffolding; no test
+  currently demonstrates punch-event accuracy.
 
 The web application can upload videos, persist analysis jobs, report status,
 and cancel queued work. The computer-vision worker is not implemented yet, so
